@@ -19,6 +19,11 @@ export const EventList: React.FC<EventListProps> = ({
   onEdit,
   editingEventId,
 }) => {
+  const formatDate = (dateStr: string) => {
+    const [day, month, year] = dateStr.split(".");
+    return `${day}.${month}.${year}`;
+  };
+
   if (events.length === 0) {
     return <p className="no-events">Нет мероприятий</p>;
   }
@@ -32,7 +37,7 @@ export const EventList: React.FC<EventListProps> = ({
         >
           <div className="event-info">
             <div className="event-title">{event.title}</div>
-            <div className="event-date">{new Date(event.date).toLocaleDateString()}</div>
+            <div className="event-date">{formatDate(event.date)}</div>
           </div>
           <div className="event-actions">
             <button onClick={() => onEdit(event)}>Редактировать</button>
