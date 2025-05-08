@@ -1,0 +1,500 @@
+:root {
+  --bg-color: #ffffff;
+  --text-color: #333333;
+  --border-color: #cccccc;
+  --hover-bg: #f8f9fa;
+  --button-bg: #ff6b00;
+  --button-hover: #e05e00;
+  --error-color: #dc3545;
+  --shadow-color: rgba(0, 0, 0, 0.1);
+  --secondary-text: #666666;
+}
+
+[data-theme="dark"] {
+  --bg-color: #1a1a1a;
+  --text-color: #ffffff;
+  --border-color: #404040;
+  --hover-bg: #2d2d2d;
+  --button-bg: #ff8533;
+  --button-hover: #ff6b00;
+  --error-color: #dc3545;
+  --shadow-color: rgba(0, 0, 0, 0.3);
+  --secondary-text: #a0a0a0;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.app {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.app h1 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.event-list p {
+  text-align: center;
+  font-size: 1.2em;
+  color: #666;
+  margin: 20px 0;
+}
+
+.event-form {
+  margin-bottom: 30px;
+  padding: 20px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  position: relative;
+  background-color: var(--bg-color);
+  z-index: 2000;
+}
+
+.event-form.editing {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px var(--shadow-color);
+  border-color: var(--button-bg);
+  background-color: var(--hover-bg);
+}
+
+.event-form div {
+  margin-bottom: 15px;
+}
+
+.event-form label {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--text-color);
+}
+
+.event-form input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  box-sizing: border-box;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+.error {
+  color: var(--error-color);
+  font-size: 0.9em;
+  margin-top: 5px;
+  display: block;
+}
+
+.error.popup-error {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: var(--bg-color);
+  padding: 8px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  box-shadow: 0 2px 4px var(--shadow-color);
+  margin-top: 5px;
+  z-index: 1000;
+  text-align: center;
+}
+
+.button-group {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.edit-button-container {
+  position: relative;
+  display: inline-flex;
+  align-items: stretch;
+}
+
+button {
+  padding: 8px 16px;
+  background-color: var(--button-bg);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  white-space: nowrap;
+  min-width: 100px;
+  height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: var(--button-hover);
+}
+
+button.disabled {
+  background-color: var(--border-color);
+  cursor: not-allowed;
+}
+
+button.disabled:hover {
+  background-color: var(--border-color);
+}
+
+.event-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  position: relative;
+  z-index: 1;
+}
+
+.event-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  flex-wrap: wrap;
+  gap: 10px;
+  background-color: var(--bg-color);
+  position: relative;
+  z-index: 1;
+}
+
+.event-item:hover,
+.event-item.editing {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px var(--shadow-color);
+  border-color: var(--button-bg);
+  background-color: var(--hover-bg);
+  z-index: 1;
+}
+
+.event-info {
+  flex: 1;
+  min-width: 200px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.event-title {
+  font-size: 1.1em;
+  font-weight: bold;
+  word-break: break-word;
+  line-height: 1.2;
+  color: var(--text-color);
+}
+
+.event-date {
+  color: var(--secondary-text);
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.event-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+@media (max-width: 400px) {
+  .app {
+    padding: 10px;
+  }
+
+  .event-form {
+    padding: 15px;
+  }
+
+  .event-item {
+    padding: 10px;
+  }
+
+  .event-actions {
+    width: 100%;
+    justify-content: flex-end;
+  }
+
+  button {
+    flex: 1;
+    min-width: 0;
+  }
+}
+
+.no-events {
+  text-align: center;
+  font-size: 1.2em;
+  color: var(--secondary-text);
+  margin: 20px 0;
+}
+
+.event-list-popup {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: var(--bg-color);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  box-shadow: 0 4px 8px var(--shadow-color);
+  z-index: 3000;
+  max-height: 200px;
+  overflow-y: auto;
+  min-width: 200px;
+  max-width: 300px;
+  margin-top: 5px;
+}
+
+.event-list-item {
+  padding: 8px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  cursor: pointer;
+  border-bottom: 1px solid var(--border-color);
+  font-size: 0.9em;
+  color: var(--text-color);
+}
+
+.event-list-item:last-child {
+  border-bottom: none;
+}
+
+.event-list-item:hover {
+  background-color: var(--hover-bg);
+}
+
+.event-list-item span:first-child {
+  font-weight: 500;
+  color: var(--text-color);
+}
+
+.event-list-item span:last-child {
+  color: var(--secondary-text);
+  font-size: 0.9em;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.header h1 {
+  margin: 0;
+}
+
+.theme-toggle {
+  background: none;
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+  font-size: 1.5em;
+  padding: 8px;
+  min-width: auto;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.theme-toggle:hover {
+  background-color: var(--hover-bg);
+  transform: scale(1.1);
+}
+
+.date-picker {
+  position: relative;
+  width: 100%;
+}
+
+.date-input-container {
+  position: relative;
+  display: flex;
+  gap: 8px;
+}
+
+.date-input-container input {
+  flex: 1;
+  padding-right: 40px;
+}
+
+.calendar-button {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  min-width: 30px;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  font-size: 1.2em;
+  background: none;
+  border: none;
+  color: var(--text-color);
+  cursor: pointer;
+  z-index: 2;
+}
+
+.calendar-button:hover {
+  background: none;
+  color: var(--button-bg);
+}
+
+.calendar {
+  position: absolute;
+  top: calc(100% + 5px);
+  left: 0;
+  right: 0;
+  background: var(--bg-color);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  box-shadow: 0 4px 8px var(--shadow-color);
+  padding: 10px;
+  z-index: 3000;
+  width: 300px;
+  margin: 0 auto;
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.calendar-header button {
+  min-width: 30px;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  font-size: 1.2em;
+  background: none;
+  border: none;
+  color: var(--text-color);
+  cursor: pointer;
+}
+
+.calendar-header button:hover {
+  background: none;
+  color: var(--button-bg);
+}
+
+.calendar-header span {
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+.calendar-weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+  margin-bottom: 5px;
+  text-align: center;
+  font-weight: 500;
+  color: var(--secondary-text);
+}
+
+.calendar-days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+}
+
+.calendar-day {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  font-size: 0.9em;
+  background: none;
+  border: none;
+  color: var(--text-color);
+}
+
+.calendar-day:hover:not(.empty):not(.past) {
+  background-color: var(--hover-bg);
+}
+
+.calendar-day.selected {
+  background-color: var(--button-bg);
+  color: white;
+}
+
+.calendar-day.today {
+  border: 2px solid var(--button-bg);
+}
+
+.calendar-day.past {
+  color: var(--secondary-text);
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.calendar-day.empty {
+  cursor: default;
+}
+
+@media (max-width: 400px) {
+  .calendar {
+    width: 100%;
+  }
+}
