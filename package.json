@@ -2,6 +2,7 @@
   "name": "list-of-events",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://dimabagz.github.io/list-of-events",
   "dependencies": {
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.6.3",
