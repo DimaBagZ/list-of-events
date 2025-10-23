@@ -153,15 +153,19 @@ npm run build
 ## Блок для скриншотов с проекта
 
 <img width="823" height="449" alt="image" src="https://github.com/user-attachments/assets/c29990b5-cb60-4361-ba88-7ac4d8c63644" />
+
 _Главная страница приложения в светлой теме_
 
 <img width="820" height="452" alt="image" src="https://github.com/user-attachments/assets/47aa1445-0dcd-49bc-819b-6c7addbfe3da" />
+
 _Главная страница приложения в темной теме_
 
 <img width="253" height="556" alt="image" src="https://github.com/user-attachments/assets/f622c894-96db-4f95-8d5e-af4a22d21e61" />
+
 _Адаптивная версия для мобильных устройств_
 
 <img width="816" height="452" alt="image" src="https://github.com/user-attachments/assets/dd37b449-dc1d-4409-94b1-6363c46a5ca2" />
+
 _Кастомный календарь для выбора даты_
 
 ## Особенности реализации
